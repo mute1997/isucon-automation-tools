@@ -4,6 +4,7 @@
   register: mycnf
 
 - name: backup mysql file
+  become: yes
   copy:
     src: files/my.cnf
     dest: /etc/my.cnf
@@ -11,6 +12,17 @@
 
 
 - name: copy mysql setting
+  become: Yes
   copy:
     src: files/my.cnf
     dest: /etc/my.cnf
+
+- name: copy mysql setting
+  become: yes
+  copy:
+    src: files/my.cnf
+    dest: /etc/my.cnf
+
+- name: restart mysql
+  become: yes
+  command: systemctl restart mysql

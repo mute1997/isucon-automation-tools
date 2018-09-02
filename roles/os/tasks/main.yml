@@ -1,8 +1,16 @@
 - name: add new setting
+  become: yes
   blockinfile:
     dest: /etc/sysctl.conf
     block: "{{sysctl_content}}"
 
+- name: increase file descriptor
+  become: yes
+  blockinfile:
+    dest: /etc/sysctl.conf
+    block: "fs.file-max = 50000"
+
 - name: Enable new sysctl
+  become: yes
   command:
     name: /sbin/sysctl -p

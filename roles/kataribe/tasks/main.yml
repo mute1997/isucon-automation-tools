@@ -1,24 +1,29 @@
 - name: Install unzip
+  become: yes
   package:
     name: unzip
     state: present
 
 - name: Install kataribe
+  become: yes
   get_url:
     url: https://github.com/matsuu/kataribe/releases/download/v0.3.0/linux_amd64.zip
     dest: /tmp
 
 - name: add kataribe directory
+  become: yes
   file:
     path: /tmp/kataribe
     state: directory
 
 - name: Unzip kataribe
+  become: yes
   unarchive:
     src: /tmp/linux_amd64.zip
     dest: /tmp/kataribe
 
 - name: copy kataribe
+  become: yes
   copy:
     src: /tmp/kataribe/kataribe
     dest: /usr/bin/kataribe
