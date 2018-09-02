@@ -1,0 +1,6 @@
+- hosts: app
+  roles:
+    - kataribe
+    - memcached
+    - mysql
+    - nginx

@@ -1,0 +1,14 @@
+- name: backup mysql file
+  stat:
+    path: /etc/my.cnf
+    register: mycnf
+  copy:
+    src: files/my.cnf
+    dest: /etc/my.cnf
+  when: mycnf.stat.exists
+
+
+- name: copy mysql setting
+  copy:
+    src: files/my.cnf
+    dest: /etc/my.cnf

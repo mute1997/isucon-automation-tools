@@ -1,0 +1,8 @@
+- name: add new setting
+  blockinfile:
+    dest: /etc/sysctl.conf
+    block: "{{sysctl_content}}"
+
+- name: Enable new sysctl
+  command:
+    name: /sbin/sysctl -p

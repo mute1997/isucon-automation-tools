@@ -1,0 +1,19 @@
+- name: Install unzip
+  package:
+    name: unzip
+    state: present
+
+- name: Install kataribe
+  get_url:
+    url: https://github.com/matsuu/kataribe/releases/download/v0.3.0/linux_amd64.zip
+    dest: /tmp
+
+- name: Unzip kataribe
+  unarchive:
+    src: /tmp/linux_amd64.zip
+    dest: /tmp/kataribe
+
+- name: copy kataribe
+  copy:
+    src: /tmp/kataribe/kataribe
+    dest: /usr/bin/kataribe
