@@ -1,0 +1,19 @@
+- name: add mute
+  become: yes
+  command: useradd -m mute
+
+- name: add coyama
+  become: yes
+  command: useradd -m coyama
+
+- name: add 5st7
+  become: yes
+  command: useradd -m 5st7
+
+- name: copy coyama authorized key
+  become_user: coyama
+  command: curl https://github.com/tomoyk.keys >> ~/.ssh/authorized_keys
+
+# - name: copy 5st7 authorized key
+#   become_user: 5st7
+#   command: curl https://github.com/XXX.keys >> ~/.ssh/authorized_keys
