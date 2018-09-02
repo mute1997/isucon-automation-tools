@@ -8,6 +8,11 @@
     url: https://github.com/matsuu/kataribe/releases/download/v0.3.0/linux_amd64.zip
     dest: /tmp
 
+- name: add kataribe directory
+  file:
+    path: /tmp/kataribe
+    state: directory
+
 - name: Unzip kataribe
   unarchive:
     src: /tmp/linux_amd64.zip
@@ -17,3 +22,4 @@
   copy:
     src: /tmp/kataribe/kataribe
     dest: /usr/bin/kataribe
+    mode: 755

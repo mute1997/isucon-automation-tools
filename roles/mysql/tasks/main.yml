@@ -1,7 +1,9 @@
-- name: backup mysql file
+- name: register mycnf
   stat:
     path: /etc/my.cnf
-    register: mycnf
+  register: mycnf
+
+- name: backup mysql file
   copy:
     src: files/my.cnf
     dest: /etc/my.cnf
