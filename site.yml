@@ -3,4 +3,5 @@
     - kataribe
     - memcached
     - mysql
-    - nginx
+    - os
+    - redis

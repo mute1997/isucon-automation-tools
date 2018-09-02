@@ -21,6 +21,7 @@
   unarchive:
     src: /tmp/linux_amd64.zip
     dest: /tmp/kataribe
+    remote_src: yes
 
 - name: copy kataribe
   become: yes
@@ -28,3 +29,4 @@
     src: /tmp/kataribe/kataribe
     dest: /usr/bin/kataribe
     mode: 755
+    remote_src: yes

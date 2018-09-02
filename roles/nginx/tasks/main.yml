@@ -14,6 +14,7 @@
   copy:
     src: /etc/nginx/nginx.conf
     dest: /backup/nginx.conf
+    remote_src: yes
   when: nginxconf.stat.exists
 
 - name: copy nginx file

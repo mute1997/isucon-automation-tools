@@ -12,7 +12,8 @@
 - name: backup mysql file
   become: yes
   copy:
-    src: /etc//my.cnf
+    remote_src: yes
+    src: /etc/my.cnf
     dest: /backup/my.cnf
   when: mycnf.stat.exists
 
