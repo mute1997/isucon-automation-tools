@@ -1,0 +1,27 @@
+- name: register nginx
+  stat:
+    path: /etc/nginx/nginx.conf
+  register: nginxconf
+
+- name: create backup directory
+  become: yes
+  file:
+    path: /backup
+    state: directory
+
+- name: backup nginx file
+  become: yes
+  copy:
+    src: /etc/nginx/nginx.conf
+    dest: /backup/nginx.conf
+  when: nginxconf.stat.exists
+
+- name: copy nginx file
+  become: yes
+  copy:
+    src: files/nginx.conf
+    dest: /etc/nginx/nginx.conf
+
+- name: restart nginx 
+  become: yes
+  command: systemctl restart nginx

@@ -3,16 +3,21 @@
     path: /etc/my.cnf
   register: mycnf
 
+- name: create backup directory
+  become: yes
+  file:
+    path: /backup
+    state: directory
+
 - name: backup mysql file
   become: yes
   copy:
-    src: files/my.cnf
-    dest: /etc/my.cnf
+    src: /etc//my.cnf
+    dest: /backup/my.cnf
   when: mycnf.stat.exists
 
-
 - name: copy mysql setting
-  become: Yes
+  become: yes
   copy:
     src: files/my.cnf
     dest: /etc/my.cnf
