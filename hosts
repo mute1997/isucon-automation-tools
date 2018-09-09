@@ -1,5 +1,5 @@
 [app]
-ec2-52-194-183-242.ap-northeast-1.compute.amazonaws.com
+localhost
 
 [db]
 

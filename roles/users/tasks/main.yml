@@ -1,19 +1,64 @@
 - name: add mute
   become: yes
-  command: useradd -m mute
+  user:
+    system: yes
+    name: mute
+    state: present
 
 - name: add coyama
   become: yes
-  command: useradd -m coyama
+  user:
+    system: yes
+    name: coyama
+    state: present
 
 - name: add 5st7
   become: yes
-  command: useradd -m 5st7
+  user:
+    system: yes
+    name: 5st7
+    state: present
+
+- name: make .ssh for mute
+  become: yes
+  file:
+    owner: mute
+    group: mute
+    path: /home/mute/.ssh
+    state: directory
+
+- name: make .ssh for coyama
+  become: yes
+  file:
+    owner: coyama
+    group: coyama
+    path: /home/coyama/.ssh
+    state: directory
+
+- name: copy mute authorized key
+  become: yes
+  get_url:
+    url: https://github.com/mute1997.keys
+    dest: /home/mute/.ssh/authorized_keys
 
 - name: copy coyama authorized key
-  become_user: coyama
-  command: curl https://github.com/tomoyk.keys >> ~/.ssh/authorized_keys
+  become: yes
+  get_url:
+    url: https://github.com/tomoyk.keys
+    dest: /home/coyama/.ssh/authorized_keys
 
-# - name: copy 5st7 authorized key
-#   become_user: 5st7
-#   command: curl https://github.com/XXX.keys >> ~/.ssh/authorized_keys
+- name: 600 mute
+  become: yes
+  file:
+    owner: mute
+    group: mute
+    path: /home/mute/.ssh/authorized_keys
+    mode: 0600
+
+- name: 600 coyama
+  become: yes
+  file:
+    owner: coyama
+    group: coyama
+    path: /home/coyama/.ssh/authorized_keys
+    mode: 0600
