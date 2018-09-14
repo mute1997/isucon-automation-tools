@@ -1,4 +1,10 @@
+[all]
+localhost
+
 [app]
+localhost
+
+[db]
 localhost
 
 [all:vars]
