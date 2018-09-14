@@ -1,0 +1,3 @@
+- name: fetch nginx.conf
+  src: /etc/nginx/nginx.conf
+  dest: ~/nginx.conf
