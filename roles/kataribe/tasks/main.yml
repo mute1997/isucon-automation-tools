@@ -30,9 +30,3 @@
     dest: /usr/bin/kataribe
     mode: 755
     remote_src: yes
-
-- name: kataribe.toml
-  become: yes
-  get_url:
-    url: https://raw.githubusercontent.com/matsuu/kataribe/master/kataribe.toml
-    dest: /usr/bin/kataribe.toml
