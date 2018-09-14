@@ -35,6 +35,14 @@
     path: /home/coyama/.ssh
     state: directory
 
+- name: make .ssh for 5st7
+  become: yes
+  file:
+    owner: 5st7
+    group: 5st7
+    path: /home/5st7/.ssh
+    state: directory
+
 - name: copy mute authorized key
   become: yes
   get_url:
@@ -46,6 +54,12 @@
   get_url:
     url: https://github.com/tomoyk.keys
     dest: /home/coyama/.ssh/authorized_keys
+
+- name: copy 5st7 authorized key
+  become: yes
+  get_url:
+    url: https://github.com/tf-ghost.keys
+    dest: /home/5st7/.ssh/authorized_keys
 
 - name: 600 mute
   become: yes
@@ -61,4 +75,12 @@
     owner: coyama
     group: coyama
     path: /home/coyama/.ssh/authorized_keys
+    mode: 0600
+
+- name: 600 5st7
+  become: yes
+  file:
+    owner: 5st7
+    group: 5st7
+    path: /home/5st7/.ssh/authorized_keys
     mode: 0600

@@ -1,9 +1,5 @@
 [app]
 localhost
 
-[db]
-
-[bench]
-
 [all:vars]
 ansible_ssh_user=isucon
