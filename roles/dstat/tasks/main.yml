@@ -4,6 +4,12 @@
     url: https://github.com/dagwieers/dstat/archive/0.7.3.tar.gz
     dest: /tmp
 
+- name: add dstat directory
+  become: yes
+  file:
+    path: /tmp/dstat-0.7.2
+    state: directory
+
 - name: dstat.tar.bz2
   unarchive:
     src: /tmp/dstat-0.7.2.tar.bz2
@@ -15,4 +21,5 @@
   copy:
     src: /tmp/dstat-0.7.2/dstat
     dest: /usr/bin/dstat
+    mode: 755
     remote_src: yes
